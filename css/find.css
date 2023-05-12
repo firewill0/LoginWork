@@ -93,3 +93,8 @@
     padding: 64px 90px;
 }
 
+.notice_text>span {
+    font-size: 18px;
+    font-weight: bold;
+}
+

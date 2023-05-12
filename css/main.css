@@ -189,19 +189,29 @@ img {
 
 .header_outer .header .gnb>a:nth-child(1) {
     padding-left: 0px;
+    display: none;
 }
 
-.header_outer .header .gnb>a:nth-child(4) {
+.header_outer .header .gnb>a:nth-child(2) {
+    display: none;
+}
+
+
+.header_outer .header .gnb>a:nth-child(3) {
+    padding-left: 0px;
+}
+
+.header_outer .header .gnb>a:nth-child(6) {
     padding-left: 30px;
     padding-top: 0px;
 }
 
-.header_outer .header .gnb>a:nth-child(5) {
+.header_outer .header .gnb>a:nth-child(7) {
     padding: 0 30px;
     position: relative;
 }
 
-.header_outer .header .gnb>a:nth-child(5)>p.cart_count {
+.header_outer .header .gnb>a:nth-child(7)>p.cart_count {
     font-size: 10px;
     position: absolute;
     top: -6px;

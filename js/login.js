@@ -17,26 +17,59 @@
 // frnd_id: "greenweb123"
 // data list
 
-import accountList from "./data.js";
+// 회원가입을 통해 추가한 계정은 당연히 작동되지 않음.
 
+import accountList from "./data.js";
+import {
+    setCookie,
+    getCookie
+} from "./cookie_control.js";
 
 document.addEventListener("DOMContentLoaded", () => {
 
     let accountListCount = accountList.length;
+    let loginSuccess = false;
+    let idTemp = "";
 
     const pw_show = document.querySelector('#pw_show_id');
     const pw = document.getElementById('pw_id');
     const id = document.getElementById('input_id');
+    const mem_id = document.getElementById('mem_id');
     const btnLogin = document.getElementById('btnLogin');
     const termsBtn = document.querySelector('.terms');
     const termsCloseBtn = document.querySelector('.termsClose');
     const termsArea = document.querySelector('.termsArea');
     const login_alert = document.querySelector('.login_alert');
+    const capslock_alert = document.querySelector('.alert_capslock');
+
+    function memidShow() {
+        let lastId = getCookie("lastId");
+
+        if (lastId != null || lastId != "" || lastId != " " || lastId != undefined) {
+            id.value = lastId;
+        };
+    };
+
+    memidShow();
 
     btnLogin.addEventListener('click', LoginEvent);
     pw_show.addEventListener('click', pwShowEvent);
-    termsBtn.addEventListener('click',termsOpenEvent);
-    termsCloseBtn.addEventListener('click',termsCloseEvent);
+    termsBtn.addEventListener('click', termsOpenEvent);
+    termsCloseBtn.addEventListener('click', termsCloseEvent);
+    pw.addEventListener('keyup', capsLockDetect);
+
+    function capsLockDetect(e) {
+        if (e.getModifierState("CapsLock")) {
+            // visibility: hidden;
+            // opacity: 0;
+            capslock_alert.style.visibility = "visible";
+            capslock_alert.style.opacity = "1";
+
+        } else {
+            capslock_alert.style.visibility = "hidden";
+            capslock_alert.style.opacity = "0";
+        }
+    }
 
     function pwShowEvent() {
         if (pw_show.checked) {
@@ -63,6 +96,9 @@ document.addEventListener("DOMContentLoaded", () => {
                     login_alert.style.display = "block";
                     login_alert.innerHTML = "로그인을 환영합니다.";
                     login_alert.style.color = "green";
+                    idTemp = getId;
+                    loginSuccess = true;
+                    loginStart();
                     break;
                 } else {
                     console.log('Pw not Matched');
@@ -84,13 +120,27 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     };
 
-    function termsOpenEvent () {
+    function termsOpenEvent() {
         termsArea.style.opacity = "1";
         termsArea.style.visibility = "visible";
     };
 
-    function termsCloseEvent () {
+    function termsCloseEvent() {
         termsArea.style.opacity = "0";
         termsArea.style.visibility = "hidden";
     };
+
+    function loginStart() {
+        if (loginSuccess) {
+
+            if (mem_id.checked) {
+                setCookie("lastId", idTemp);
+            } else {
+                setCookie("lastId", "");
+            }
+            setCookie("userId", idTemp);
+            setCookie("userLogin", "yes");
+            location.href = "index.html";
+        }
+    }
 });

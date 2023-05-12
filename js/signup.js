@@ -18,7 +18,7 @@
 // data list
 
 import accountList from "./data.js";
-
+import {setCookie,getCookie} from "./cookie_control.js";
 
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -30,6 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let emailCheck = false;
     let termsCheck = false;
     let sameIdCheck = false;
+    let idChecked = false;
 
     let nameTemp = "";
     let idTemp = "";
@@ -379,8 +380,37 @@ document.addEventListener("DOMContentLoaded", () => {
     function loginFnc() {
         if (nameCheck && idCheck && pwCheck && emailCheck && termsCheck && !sameIdCheck) {
             console.log("가입 가능");
+            setCookie("userName",nameTemp);
+            setCookie("userId",idTemp);
+            setCookie("userLogin","yes");
+            location.href = "welcome.html";
         } else {
             console.log("가입 불가");
+            if (!nameCheck) {
+                nameInput.style.borderColor = "red";
+                nameInput.style.borderWidth = "2px";
+                nameInput.focus();
+            };
+            if (!idCheck) {
+                input_id.style.borderColor = "red";
+                input_id.style.borderWidth = "2px";
+                input_id.focus();
+            };
+            if (!pwCheck) {
+                pw.style.borderColor = "red";
+                pw.style.borderWidth = "2px";
+                pw.focus();
+                pwChk.style.borderColor = "red";
+                pwChk.style.borderWidth = "2px";
+            };
+            if (!emailCheck) {
+                email_id.style.borderColor = "red";
+                email_id.style.borderWidth = "2px";
+                email_id.focus();
+            }
+            if (!termsCheck) {
+                chk_mainTerms.focus();
+            }
         };
     };
 });
