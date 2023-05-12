@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="./css/login.css">
     <link rel="stylesheet" href="./css/signup.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <script type="module" src="./js/signup.js"></script>
 </head>
 
 <body>
@@ -77,8 +78,8 @@
                     <p class="areaTitle">아이디<span>*</span></p>
                     <input type="text" placeholder="아이디를 입력해주세요" name="input_id" id="input_id" class="inputDesign"
                         required>
-                    <button type="button" class="btnIDChk">ID중복확인</button>
-                    <p class="text_IDWarn text_warning">테스트</p>
+                    <button type="button" id="btnIDChk" class="btnIDChk">ID 중복 확인</button>
+                    <p class="text_IDWarn text_warning"></p>
                 </div>
 
                 <div class="pwArea inputArea">
@@ -94,7 +95,7 @@
 
                     <input type="password" name="pw_id" id="pw_id" class="inputDesign" placeholder="비밀번호를 입력해주세요"
                         required>
-                    <p class="text_PWWarn text_warning">테스트</p>
+                    <p class="text_PWWarn text_warning"></p>
                 </div>
 
                 <div class="pwCheckArea inputArea">
@@ -102,7 +103,7 @@
 
                     <input type="password" name="pwchk_id" id="pwchk_id" class="inputDesign"
                         placeholder="비밀번호를 다시 입력해주세요" required>
-                    <p class="text_PWChkWarn text_warning">테스트</p>
+                    <p class="text_PWChkWarn text_warning"></p>
                 </div>
 
                 <div class="emailArea inputArea">
@@ -814,7 +815,7 @@
                         </p>
                     </div>
                     <div class="chkArea">
-                        <label for="chk_mainTerms"><input type="checkbox" id="chk_mainTerms" class="chk_mainTerms"
+                        <label for="chk_mainTerms"><input type="checkbox" id="chk_mainTerms" class="chk_mainTerms terms_all"
                                 required>
                             <p>이용약관에 동의합니다 (필수)</p>
                         </label>
@@ -833,7 +834,7 @@
                     </p>
                 </div>
                 <div class="chkArea">
-                    <label for="chk_infoTerms"><input type="checkbox" id="chk_infoTerms" class="chk_infoTerms">
+                    <label for="chk_infoTerms"><input type="checkbox" id="chk_infoTerms" class="chk_infoTerms terms_all">
                         <p>개인정보 수집 이용 안내 (필수)</p>
                     </label>
                 </div>
@@ -841,18 +842,18 @@
                 <div class="marketing">
                     <p class="txt_marketing">마케팅 정보 수신 동의 (선택)</p>
                     <div class="chkArea">
-                        <label for="mkr_email"><input type="checkbox" id="mkr_email" class="mkr_email">
+                        <label for="mkr_email"><input type="checkbox" id="mkr_email" class="mkr_email terms_all">
                             <p>E-mail</p>
                         </label>
                     </div>
                     <div class="chkArea">
-                        <label for="mkr_push"><input type="checkbox" id="mkr_push" class="mkr_push">
+                        <label for="mkr_push"><input type="checkbox" id="mkr_push" class="mkr_push terms_all">
                             <p>PUSH, SNS 등</p>
                         </label>
                     </div>
                 </div>
 
-                <button type="button" class="btnLogin btnSignup" id="bgnSignup">회원가입</button>
+                <button type="button" class="btnLogin btnSignup" id="btnSignup">회원가입</button>
 
             </form>
         </div>

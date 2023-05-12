@@ -14,11 +14,8 @@
     <link rel="stylesheet" href="./css/main.css">
     <link rel="stylesheet" href="./css/login.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            
-        });
-    </script>
+    <script type="module" src="./js/login.js"></script>
+
 </head>
 
 <body>
@@ -79,8 +76,8 @@
                     <p class="alert_capslock"><i class="fas fa-exclamation-circle"></i> Caps Lock이 켜져있습니다!</p>
                 </div>
 
-
-                <button type="button" class="btnLogin" id="bgnLogin">로그인</button>
+                <p class="login_alert"></p>
+                <button type="button" class="btnLogin" id="btnLogin">로그인</button>
 
                 <div class="signupArea">
                     <p>아직 회원이 아니신가요?</p>
@@ -113,7 +110,6 @@
                 <p>이용 약관</p>
                 <span class="termsClose">닫기</span>
             </div>
-
 
             <p class="terms_detail">
                 서비스 이용약관[서비스 이용 약관]
