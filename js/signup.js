@@ -18,7 +18,10 @@
 // data list
 
 import accountList from "./data.js";
-import {setCookie,getCookie} from "./cookie_control.js";
+import {
+    setCookie,
+    getCookie
+} from "./cookie_control.js";
 
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -180,36 +183,48 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function idDupCheck() {
         let getid = input_id.value;
+        console.log(getid);
 
-        for (let i = 0; i < accountListCount; i++) {
-            let data_id = accountList[i].id;
+        if (getid !== " " && getid !== "" && getid !== null && getid !== undefined) {
+            for (let i = 0; i < accountListCount; i++) {
+                let data_id = accountList[i].id;
 
-            if (getid == data_id) {
-                console.log('Id Matched');
-                sameIdCheck = true;
-                break;
-            } else {
-                console.log('Id not Matched');
-                sameIdCheck = false;
+                if (getid == data_id) {
+                    console.log('Id Matched');
+                    sameIdCheck = true;
+                    break;
+                } else {
+                    console.log('Id not Matched');
+                    sameIdCheck = false;
+                };
             };
-        };
 
-        if (!sameIdCheck) {
-            text_IDWarn.innerHTML = "<i class='fas fa-check-circle'>" + "</i> " + "사용 가능한 아이디입니다.";
-            text_IDWarn.style.color = "green";
-            idCheck = true;
-            idTemp = getid;
-            input_id.style.borderColor = "green";
-            input_id.style.borderWidth = "2px";
+            if (!sameIdCheck) {
+                text_IDWarn.innerHTML = "<i class='fas fa-check-circle'>" + "</i> " + "사용 가능한 아이디입니다.";
+                text_IDWarn.style.color = "green";
+                idCheck = true;
+                idTemp = getid;
+                input_id.style.borderColor = "green";
+                input_id.style.borderWidth = "2px";
+            } else {
+                text_IDWarn.innerHTML = "<i class='fas fa-exclamation-circle'>" + "</i> " +
+                    "이미 사용중인 아이디입니다.";
+                text_IDWarn.style.color = "red";
+                idCheck = false;
+                idTemp = "";
+                input_id.style.borderColor = "red";
+                input_id.style.borderWidth = "2px";
+            };
         } else {
             text_IDWarn.innerHTML = "<i class='fas fa-exclamation-circle'>" + "</i> " +
-                "이미 사용중인 아이디입니다.";
+                "아이디를 입력해주세요.";
             text_IDWarn.style.color = "red";
             idCheck = false;
             idTemp = "";
             input_id.style.borderColor = "red";
             input_id.style.borderWidth = "2px";
         };
+
     };
 
     function idValidCheck() {
@@ -380,9 +395,9 @@ document.addEventListener("DOMContentLoaded", () => {
     function loginFnc() {
         if (nameCheck && idCheck && pwCheck && emailCheck && termsCheck && !sameIdCheck) {
             console.log("가입 가능");
-            setCookie("userName",nameTemp);
-            setCookie("userId",idTemp);
-            setCookie("userLogin","yes");
+            setCookie("userName", nameTemp);
+            setCookie("userId", idTemp);
+            setCookie("userLogin", "yes");
             location.href = "welcome.html";
         } else {
             console.log("가입 불가");
